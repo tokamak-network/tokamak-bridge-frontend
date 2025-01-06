@@ -24,11 +24,10 @@ export const findTokenAmount = (
   const claimerData = tokenEntry.data.find(
     (data: any) => data.claimer.toLowerCase() === claimerLower
   );
-
   return {
-    l1Token: claimerData?.l1Token,
-    l2Token: claimerData?.l2Token,
-    tokenName: claimerData?.tokenName,
+    l1Token: tokenEntry?.l1Token,
+    l2Token: tokenEntry?.l2Token,
+    tokenName: tokenEntry?.tokenName,
     data: claimerData,
   };
 };
