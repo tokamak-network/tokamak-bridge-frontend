@@ -35,14 +35,15 @@ export default function Account() {
   const [titanDipositHistory, setTitanDipositHistory] =
     useRecoilState(titanDepositHistory);
 
-  const [thanosSepWithdrawHistory, setThanosWithdrawHistory] =
-    useRecoilState(thanosWithdrawHistory);
+  const [thanosSepWithdrawHistory, setThanosWithdrawHistory] = useRecoilState(
+    thanosWithdrawHistory
+  );
 
   const buttonText = isConnected
     ? trimAddress({ address })
     : mobileView
-      ? "Connect"
-      : "Connect Wallet";
+    ? "Connect"
+    : "Connect Wallet";
 
   useEffect(() => {
     setThanosDipositHistory({
