@@ -72,7 +72,9 @@ export default function AccountHistoryNew() {
   }, [_selectedTransactionCategory, withdrawHistory]);
   return (
     <Flex flexDir={"column"} gap={"6px"} h={"100%"} width={"100%"}>
-      <TransactionHistoryBanner />
+      {_selectedTransactionCategory === Action.Withdraw && (
+        <TransactionHistoryBanner />
+      )}
       <Flex flexDirection="column" gap="2" h={"100%"}>
         {historyData === undefined && <NoHistoryComponent />}
         {historyData === null && <LoadingSpinner />}
