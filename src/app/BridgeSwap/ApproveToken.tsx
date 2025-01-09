@@ -35,6 +35,7 @@ export default function ApproveToken() {
 
   if (
     (isApproved ||
+      mode === "Withdraw" ||
       isNotSupportForBridge ||
       !inToken ||
       (mode == "Swap" && isTONatPair) ||
@@ -43,7 +44,7 @@ export default function ApproveToken() {
       isInputZero) &&
     (confirmedApproveTransaction === undefined ||
       confirmedApproveTransaction?.tokenData?.[0]?.tokenAddress.toLowerCase() !==
-      inToken?.tokenAddress.toLowerCase() ||
+        inToken?.tokenAddress.toLowerCase() ||
       isInputZero)
   ) {
     return null;
@@ -52,16 +53,17 @@ export default function ApproveToken() {
   const parsedAmount =
     confirmedApproveTransaction?.tokenData?.[0]?.amount?.toString()
       ? ethers.utils.formatUnits(
-        confirmedApproveTransaction.tokenData[0].amount.toString(),
-        inToken?.token.decimals
-      )
+          confirmedApproveTransaction.tokenData[0].amount.toString(),
+          inToken?.token.decimals
+        )
       : "-";
 
   const text =
     confirmedApproveTransaction && isApproved
       ? `${commafy(parsedAmount, 4)} ${inToken?.tokenSymbol} has been approved`
-      : `${isRevokeForUSDT ? "Revoke" : "Approve"} ${inToken?.tokenSymbol
-      } for ${capitalizeFirstChar(mode ?? undefined)}`;
+      : `${isRevokeForUSDT ? "Revoke" : "Approve"} ${
+          inToken?.tokenSymbol
+        } for ${capitalizeFirstChar(mode ?? undefined)}`;
 
   const afterApproved = isApproved && confirmedApproveTransaction;
   const beforeApproved = !isLoading && !afterApproved;

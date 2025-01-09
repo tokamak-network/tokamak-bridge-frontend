@@ -93,11 +93,7 @@ export default function useWrap() {
           "swapFromTON",
           [inToken.amountBN]
         );
-        const estimateGas = await provider.estimateGas({
-          to: WrapContract.address,
-          data: calldata,
-          from: address,
-        });
+        const estimateGas = BigNumber.from(100000);
         const estimateGasWithBuffer = calculateGasMargin(estimateGas);
         if (estimateGasUsage) return estimateGasWithBuffer;
         try {

@@ -29,7 +29,7 @@ export function Details() {
       {mode !== null ? (
         <Flex w={"100%"} flexDir={"column"} rowGap={"10px"}>
           {pcView ? <Warning /> : !showWarning && <Warning />}
-          {/* <ApproveToken /> */}
+          <ApproveToken />
           <TransactionDetail />
         </Flex>
       ) : (
