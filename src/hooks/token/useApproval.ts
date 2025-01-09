@@ -154,7 +154,6 @@ export function useApprove(_mode?: ActionMode) {
     actionSort: _mode ?? mode,
   });
   const callApprove = useCallback(() => {
-    console.log("yes");
     isUSDT ? approveForUSDT() : write?.();
   }, [
     contractAddress,
